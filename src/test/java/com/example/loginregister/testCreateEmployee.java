@@ -11,8 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
-import javax.persistence.EntityManager;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -42,20 +40,31 @@ public class testCreateEmployee {
     }
     @Test
     public void addRoleToEmployee(){
-        Role roleAdmin = RoleRepo.findByName("Admin");
+        Role roleAdmin = RoleRepo.findByName("Employee");
 
         Employee employee = new Employee();
-        employee.setFullname("MayBach");
-        employee.setUsername("MayBachsic");
-        employee.setEmail("maybache@gmail.com");
+        employee.setFullname("Andrew ");
+        employee.setUsername("Andrew kibe");
+        employee.setEmail("Andrew@gmail.com");
         employee.setGender("Male");
-        employee.setPhone("0765432156");
-        employee.setPassword("welcome");
+        employee.setPhone("07567987");
+        employee.setPassword("heretodevelop");
         employee.addRole(roleAdmin);
 
         Employee savedEmployee= Repo.save(employee);
         assertThat(savedEmployee.getRoles().size()).isEqualTo(1);
 
+    }
+    @Test
+    public void testAddRoleToExistingUser() {
+        Employee employee= Repo.findById(1).get();
+        Role roleEmployee= RoleRepo.findByName("Officer");
+        Role roleStaff= RoleRepo.findByName("Employee");
+        employee.addRole(roleStaff);
+        employee.addRole(roleEmployee);
+
+        Employee savedEmployee = Repo.save(employee);
+        assertThat(((Employee) savedEmployee).getRoles().size()).isEqualTo(2);
     }
 
 }
