@@ -27,6 +27,26 @@ public class Meeting {
             inverseJoinColumns = { @JoinColumn(name = "owners_id") })
     private List<MeetingOwner> meetingOwners= new ArrayList<MeetingOwner>();
 
+    @ManyToOne
+    @JoinColumn(name="fk_room")
+    private Room room;
+
+    public Meeting() {
+
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Meeting(Room room) {
+        this.room = room;
+    }
+
     public Integer getId() {
         return id;
     }

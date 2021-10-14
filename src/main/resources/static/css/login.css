@@ -1,0 +1,36 @@
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(253, 244, 244);
+}
+.row{
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px gray;
+
+}
+img{
+    border-top-left-radius:30px;
+    border-bottom-left-radius:30px;
+}
+
+.btn1{
+    border:none;
+    outline: none;
+    height: 50px;
+    width:100%;
+    background-color: rgb(255, 197, 125);
+    color:rgb(255, 255, 255);
+    border-radius:4px ;
+    font-weight: bold;
+
+}
+.btn1:hover{
+    background:rgb(255, 255, 255);
+    border:1px solid;
+    color:rgb(253, 186, 104);
+}
